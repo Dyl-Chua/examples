@@ -55,6 +55,43 @@
                     </div>
                     
         <script>
+
+document.addEventListener("DOMContentLoaded", function(event) {
+document.getElementById("trackbutton").addEventListener("click", tracknumber);
+
+function tracknumber(){
+    document.getElementById("customerresultbox").style.display = 'none';
+
+
+ var customerphone = '';
+    customerphone = document.getElementById("customer_phone").value;
+    document.getElementById('customer_phone').value = '';
+
+    var responsejd = '';
+    var json_responsejd = '';
+    var responseo = '';
+    var json_responseo = '';
+    var responsefp = '';
+    var json_responsefp = '';
+    var counttaskhistory = 0;
+
+    var finaldate = '';
+    var finalday = '';
+    var request = new XMLHttpRequest();
+
+    document.getElementById("customerresultbox").style.display = 'none';
+    document.getElementById("wronginput").style.display = 'none';    
+    
+    document.getElementById("loading").style.display = 'inline';
+
+    request.onreadystatechange = function () {
+      if (this.readyState === 4) {
+        console.log('Status:', this.status);
+        console.log('Headers:', this.getAllResponseHeaders());
+        console.log('Body:', this.responseText);
+      }
+    };
+
 var request = new XMLHttpRequest();
 
 request.open('POST', 'https://api.tookanapp.com/v2/get_all_customers');
@@ -75,4 +112,6 @@ var body = {
   'customer_phone': '+6737178007',
 };
 request.send(JSON.stringify(body));
+
+}})
 </script>
